@@ -19,6 +19,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         _toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        _toolbar.setTitle("Toolbar");
         setSupportActionBar(_toolbar);
 
         if (savedInstanceState == null) {
@@ -44,8 +45,13 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_chart:
+                return true;
+            default:
+                // Not ours
         }
 
         return super.onOptionsItemSelected(item);
