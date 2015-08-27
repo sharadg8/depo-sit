@@ -2,16 +2,31 @@ package com.sharad.finance.deposit;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
+
+    private Toolbar _toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        _toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(_toolbar);
+
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            DepositListFragment fragment = new DepositListFragment();
+            transaction.replace(R.id.fragment, fragment);
+            transaction.commit();
+        }
     }
 
     @Override

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/ColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+        <item name="colorAccent">@color/ColorAccent</item>
+        <item name="android:textColorPrimary">@color/TextColorPrimary</item>
+        <item name="android:textColorSecondary">@color/TextColorSecondary</item>
+        <!-- Customize your theme here. -->
+
     </style>
 </resources>
