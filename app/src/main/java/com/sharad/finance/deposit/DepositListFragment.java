@@ -37,7 +37,7 @@ public class DepositListFragment extends Fragment implements FloatingActionButto
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fab_layout, container, false);
+        View rootView = inflater.inflate(R.layout.feed_list, container, false);
 
         // Make this {@link Fragment} listen for changes in both FABs.
         FloatingActionButton fab1 = (FloatingActionButton) rootView.findViewById(R.id.fab);
