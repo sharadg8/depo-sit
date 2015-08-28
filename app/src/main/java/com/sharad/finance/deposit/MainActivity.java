@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         _toolbar = (CollapsingToolbarLayout) findViewById(R.id.collapseToolbar);
         _toolbar.setTitle("Toolbar Tittle");
+        //_toolbar.setElevation(8);
 
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

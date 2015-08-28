@@ -18,18 +18,16 @@ package com.sharad.finance.deposit;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.sharad.finance.common.FloatingActionButton;
 
 
 /**
  * This fragment inflates a layout with two Floating Action Buttons and acts as a listener to
  * changes on them.
  */
-public class DepositListFragment extends Fragment implements FloatingActionButton.OnCheckedChangeListener{
+public class DepositListFragment extends Fragment {
 
     private final static String TAG = "DepositListFragment";
 
@@ -39,22 +37,6 @@ public class DepositListFragment extends Fragment implements FloatingActionButto
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.feed_list, container, false);
 
-        // Make this {@link Fragment} listen for changes in both FABs.
-        FloatingActionButton fab1 = (FloatingActionButton) rootView.findViewById(R.id.fab);
-        fab1.setOnCheckedChangeListener(this);
-        return rootView;
-    }
-
-
-    @Override
-    public void onCheckedChanged(FloatingActionButton fabView, boolean isChecked) {
-        // When a FAB is toggled, log the action.
-        switch (fabView.getId()){
-            case R.id.fab:
-                Log.d(TAG, String.format("FAB 1 was %s.", isChecked ? "checked" : "unchecked"));
-                break;
-            default:
-                break;
-        }
+         return rootView;
     }
 }

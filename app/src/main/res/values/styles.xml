@@ -3,11 +3,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
 
-        <item name="colorPrimary">@color/ColorPrimary</item>
-        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
-        <item name="colorAccent">@color/ColorAccent</item>
-        <item name="android:textColorPrimary">@color/TextColorPrimary</item>
-        <item name="android:textColorSecondary">@color/TextColorSecondary</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/icons</item>
+        <item name="android:textColorSecondary">@color/icons</item>
         <!-- Customize your theme here. -->
 
     </style>

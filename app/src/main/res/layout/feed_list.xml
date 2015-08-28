@@ -4,22 +4,4 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent" >
 
-    <com.sharad.finance.common.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="@dimen/fab_size"
-            android:layout_height="@dimen/fab_size"
-            android:layout_margin="16dp"
-            android:elevation="@dimen/fab_elevation"
-            android:background="@drawable/fab_background"
-            android:stateListAnimator="@animator/fab_anim"
-            android:layout_gravity="right|bottom">
-
-        <ImageView
-                android:layout_width="@dimen/fab_icon_size"
-                android:layout_height="@dimen/fab_icon_size"
-                android:src="@drawable/fab_icons"
-                android:layout_gravity="center"
-                android:duplicateParentState="true"/>
-
-    </com.sharad.finance.common.FloatingActionButton>
 </FrameLayout>
