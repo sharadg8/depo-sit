@@ -40,34 +40,9 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <caret line="38" column="57" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tool_bar.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tool_bar.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5615616">
-              <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DepositListFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DepositListFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,8 +54,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9310346">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="42" selection-end-column="41" />
+            <state vertical-scroll-proportion="2.9310346">
+              <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -109,15 +84,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataObject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DataObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+              <folding>
+                <marker date="1440803129850" expanded="true" signature="1681:1713" placeholder="{...}" />
+                <marker date="1440803129850" expanded="true" signature="1746:1776" placeholder="{...}" />
+                <marker date="1440803129850" expanded="true" signature="2249:2280" placeholder="{...}" />
+                <marker date="1440803129850" expanded="true" signature="2310:2343" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.62069">
-              <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-              <folding />
+            <state vertical-scroll-proportion="0.5105105">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding>
+                <element signature="e#1581#1621#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,6 +120,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -540,9 +533,19 @@
                 <option name="name" value="prepareComAndroidSupportAppcompatV72221Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:cardview-v7:22.1.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportCardviewV72210Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:design:22.2.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportDesign2221Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:recyclerview-v7:22.1.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidSupportRecyclerviewV72210Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:support-v4:22.2.1" />
@@ -668,7 +671,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4321945299848" />
+        <entry key="$PROJECT_DIR$" value="4322047651470" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -835,6 +838,8 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/design/22.2.1/design-22.2.1.aar" />
+                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/cardview-v7/22.1.0/cardview-v7-22.1.0.aar" />
+                            <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/22.1.0/recyclerview-v7-22.1.0.aar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.1/appcompat-v7-22.2.1.aar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/22.2.1/support-v4-22.2.1.aar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar" />
@@ -919,7 +924,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/ListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/common/FloatingActionButton.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fab_layout.xml" />
@@ -927,16 +931,19 @@
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/animator/fab_anim.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/fab_icons.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/fab_background.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/deposit_card.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DepositListFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/tool_bar.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/RecyclerViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DepositListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DataObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/deposit_card.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
@@ -993,172 +1000,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="animator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finance" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deposit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="finance" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="depo-sit" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1428,7 +1269,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1449,8 +1290,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
-            <element signature="e#0#1363#0" expanded="false" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#1548#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1497,6 +1338,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1595,68 +1437,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8038674">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/sharad/finance/deposit/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35674158">
-          <caret line="3845" column="47" selection-start-line="3845" selection-start-column="47" selection-end-line="3845" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/animator/fab_anim.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.62069">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DepositListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/deposit_card.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9310346">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="42" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -1672,14 +1456,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/RecyclerViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1146#1147#0" expanded="false" />
+            <element signature="e#1215#1216#0" expanded="false" />
+            <element signature="e#1417#1418#0" expanded="false" />
+            <element signature="e#1453#1454#0" expanded="false" />
+            <element signature="e#2353#2354#0" expanded="false" />
+            <element signature="e#2391#2392#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DepositListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15469614">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/DataObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+          <folding>
+            <marker date="1440803129850" expanded="true" signature="1681:1713" placeholder="{...}" />
+            <marker date="1440803129850" expanded="true" signature="1746:1776" placeholder="{...}" />
+            <marker date="1440803129850" expanded="true" signature="2249:2280" placeholder="{...}" />
+            <marker date="1440803129850" expanded="true" signature="2310:2343" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sharad/finance/deposit/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="57" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4834254">
+          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tool_bar.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5615616">
-          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+        <state vertical-scroll-proportion="-3.5172415">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/deposit_card.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.9310346">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5105105">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#1581#1621#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarActivity;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private CollapsingToolbarLayout _toolbar;
+    private RecyclerView _recyclerView;
+    private RecyclerView.Adapter _adapter;
+    private RecyclerView.LayoutManager _layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +33,22 @@ public class MainActivity extends AppCompatActivity {
         _toolbar.setTitle("Toolbar Tittle");
         //_toolbar.setElevation(8);
 
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             DepositListFragment fragment = new DepositListFragment();
             transaction.replace(R.id.fragment, fragment);
             transaction.commit();
-        }
+        }*/
+
+        _recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        _recyclerView.setHasFixedSize(true);
+        _layoutManager = new LinearLayoutManager(this);
+        _recyclerView.setLayoutManager(_layoutManager);
+        _adapter = new RecyclerViewAdapter(getDataSet());
+        _recyclerView.setAdapter(_adapter);
+        /*RecyclerView.ItemDecoration itemDecoration =
+                new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
+        _recyclerView.addItemDecoration(itemDecoration);*/
     }
 
     @Override
@@ -59,5 +76,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private ArrayList<DataObject> getDataSet() {
+        ArrayList results = new ArrayList<DataObject>();
+        for (int index = 0; index < 20; index++) {
+            DataObject obj = new DataObject("Some Primary Text " + index,
+                    "Secondary " + index);
+            results.add(index, obj);
+        }
+        return results;
     }
 }
