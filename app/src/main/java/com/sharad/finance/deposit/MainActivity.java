@@ -8,15 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private static String LOG_TAG = "MainActivity";
     private CollapsingToolbarLayout _toolbar;
     private RecyclerView _recyclerView;
     private RecyclerView.Adapter _adapter;
@@ -30,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         _toolbar = (CollapsingToolbarLayout) findViewById(R.id.collapseToolbar);
-        _toolbar.setTitle("Toolbar Tittle");
-        //_toolbar.setElevation(8);
+        _toolbar.setTitle("Sharad Benakatti");
 
         /*if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -76,6 +78,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ((RecyclerViewAdapter) _adapter).setOnItemClickListener(new
+                                                                        RecyclerViewAdapter.MyClickListener() {
+                                                                              @Override
+                                                                              public void onItemClick(int position, View v) {
+                                                                                  Log.i(LOG_TAG, " Clicked on Item " + position);
+                                                                              }
+                                                                          });
     }
 
     private ArrayList<DataObject> getDataSet() {
