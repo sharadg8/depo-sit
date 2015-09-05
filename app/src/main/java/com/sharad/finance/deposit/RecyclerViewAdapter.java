@@ -5,7 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sharad.finance.common.CircularProgressDrawable;
 
 import java.util.ArrayList;
 
@@ -24,11 +27,24 @@ public class RecyclerViewAdapter extends RecyclerView
             .OnClickListener {
         TextView label;
         TextView dateTime;
+        ImageView progress;
+
+        CircularProgressDrawable drawable;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
-            label = (TextView) itemView.findViewById(R.id.textView);
-            dateTime = (TextView) itemView.findViewById(R.id.textView2);
+            label = (TextView) itemView.findViewById(R.id.dc_title);
+            dateTime = (TextView) itemView.findViewById(R.id.dc_amount);
+            progress = (ImageView)itemView.findViewById(R.id.circularProgressbar);
+
+            drawable = new CircularProgressDrawable.Builder()
+                    .setRingWidth(4)
+                    .setOutlineColor(100)
+                    .setRingColor(150)
+                    .setCenterColor(200)
+                    .create();
+            progress.setImageDrawable(drawable);
+
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }

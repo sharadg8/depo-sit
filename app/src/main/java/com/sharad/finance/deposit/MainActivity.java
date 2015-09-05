@@ -1,9 +1,17 @@
 package com.sharad.finance.deposit;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,45 +20,101 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MotionEvent;
 import android.view.View;
-
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static String LOG_TAG = "MainActivity";
-    private CollapsingToolbarLayout _toolbar;
-    private RecyclerView _recyclerView;
-    private RecyclerView.Adapter _adapter;
-    private RecyclerView.LayoutManager _layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        _toolbar = (CollapsingToolbarLayout) findViewById(R.id.collapseToolbar);
-        _toolbar.setTitle("Sharad Benakatti");
+        initToolbar();
+        initFAB();
+        initViewPagerAndTabs();
+    }
 
-        /*if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            DepositListFragment fragment = new DepositListFragment();
-            transaction.replace(R.id.fragment, fragment);
-            transaction.commit();
-        }*/
+    private void initFAB() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabButton);
+        fab.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    Intent intent = new Intent(getApplicationContext(), AddEditActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return true;
+            }
+        });
+    }
 
-        _recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        _recyclerView.setHasFixedSize(true);
-        _layoutManager = new LinearLayoutManager(this);
-        _recyclerView.setLayoutManager(_layoutManager);
-        _adapter = new RecyclerViewAdapter(getDataSet());
-        _recyclerView.setAdapter(_adapter);
-        /*RecyclerView.ItemDecoration itemDecoration =
-                new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
-        _recyclerView.addItemDecoration(itemDecoration);*/
+    private void initToolbar() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        setTitle(getString(R.string.app_name));
+        mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    private void initViewPagerAndTabs() {
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(DepositListFragment.createInstance(20), getString(R.string.tab_1));
+        pagerAdapter.addFragment(DepositListFragment.createInstance(4), getString(R.string.tab_2));
+        viewPager.setAdapter(pagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabButton);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:  fab.show();  break;
+                    default: fab.hide();  break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) { }
+        });
+    }
+
+    static class PagerAdapter extends FragmentPagerAdapter {
+
+        private final List<Fragment> fragmentList = new ArrayList<>();
+        private final List<String> fragmentTitleList = new ArrayList<>();
+
+        public PagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            fragmentList.add(fragment);
+            fragmentTitleList.add(title);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragmentList.size();
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragmentTitleList.get(position);
+        }
     }
 
     @Override
@@ -78,27 +142,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ((RecyclerViewAdapter) _adapter).setOnItemClickListener(new
-                                                                        RecyclerViewAdapter.MyClickListener() {
-                                                                              @Override
-                                                                              public void onItemClick(int position, View v) {
-                                                                                  Log.i(LOG_TAG, " Clicked on Item " + position);
-                                                                              }
-                                                                          });
-    }
-
-    private ArrayList<DataObject> getDataSet() {
-        ArrayList results = new ArrayList<DataObject>();
-        for (int index = 0; index < 20; index++) {
-            DataObject obj = new DataObject("Some Primary Text " + index,
-                    "Secondary " + index);
-            results.add(index, obj);
-        }
-        return results;
     }
 }

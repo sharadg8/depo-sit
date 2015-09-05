@@ -14,4 +14,8 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
 
+    <color name="card_accent">#263238</color>
+    <color name="card_accent_light">#37474F</color>
+    <color name="card_accent_dark">#2979FF</color>
+
 </resources>
