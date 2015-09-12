@@ -1,5 +1,7 @@
 package com.sharad.finance.deposit;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ import java.util.Date;
  */
 public class DataObject {
     private int    _id;
+    private String _title;
     private String _accNum;
     private String _bank;
     private float  _principle;
@@ -21,11 +24,11 @@ public class DataObject {
 
     private boolean _active;
 
-    DataObject(int id, String accNum, String bank,
+    DataObject(int id, String title, String accNum, String bank,
                float principle, float rate, float actInterest,
                Date startDate, Date endDate, int tenure){
-        _id = id; _accNum = accNum; _bank = bank; _principle = principle;
-        _rate = rate; _actInterest = actInterest;
+        _id = id; _title = title; _accNum = accNum; _bank = bank;
+        _principle = principle; _rate = rate; _actInterest = actInterest;
         _startDate = startDate; _endDate = endDate; _tenure = tenure;
 
         Calendar cal = Calendar.getInstance();
@@ -45,8 +48,12 @@ public class DataObject {
         }
     }
 
-    DataObject(String accNum, String bank){
-        _accNum = accNum; _bank = bank;
+    DataObject(String title){
+        _title = title;
+        _principle = 150000;
+        _rate = 8.6f;
+        Calendar c = Calendar.getInstance();
+        _startDate = c.getTime();
     }
 
     public Date get_endDate() {        return _endDate;      }
@@ -60,5 +67,18 @@ public class DataObject {
     public int get_tenure() {          return _tenure;       }
     public String get_accNum() {       return _accNum;       }
     public String get_bank() {         return _bank;         }
+    public String get_title() {        return _title;        }
     public boolean is_active() {       return _active;       }
+
+    public String get_info() {
+        DecimalFormat df = new DecimalFormat("##,##,###");
+        return df.format(_principle)+" @ "+_rate+"%";
+    }
+
+    public String get_startDateText() {
+        final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(_startDate);
+        return df.format(cal.getTime());
+    }
 }

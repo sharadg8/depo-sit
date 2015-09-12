@@ -10,9 +10,9 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<String> mItemList;
+    private List<DataObject> mItemList;
 
-    public RecyclerAdapter(List<String> itemList) {
+    public RecyclerAdapter(List<DataObject> itemList) {
         mItemList = itemList;
     }
 
@@ -26,8 +26,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         RecyclerItemViewHolder holder = (RecyclerItemViewHolder) viewHolder;
-        String itemText = mItemList.get(position);
-        holder.setTitle(itemText);
+        String titleText = mItemList.get(position).get_title();
+        String infoText = mItemList.get(position).get_info();
+        String dateText = mItemList.get(position).get_startDateText();
+        holder.setTitle(titleText);
+        holder.setInfo(infoText);
+        holder.setDate(dateText);
     }
 
     @Override

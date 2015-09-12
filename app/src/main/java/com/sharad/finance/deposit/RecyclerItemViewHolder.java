@@ -27,5 +27,4 @@ public class RecyclerItemViewHolder extends RecyclerView.ViewHolder {
     public void setTitle(CharSequence text) {   _title.setText(text);   }
     public void setInfo(CharSequence text)  {   _info.setText(text);    }
     public void setDate(CharSequence text)  {   _date.setText(text);    }
-
 }
