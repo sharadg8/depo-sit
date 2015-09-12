@@ -12,7 +12,7 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="192dp"
+            android:layout_height="224dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="48dp"
@@ -24,7 +24,8 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                android:background="?attr/colorPrimary" />
+                android:background="?attr/colorPrimary"
+                app:layout_collapseMode="pin" />
 
             <ProgressBar
                 android:id="@+id/newCircularProgressbar"
@@ -37,16 +38,6 @@
                 android:indeterminate="false"
                 android:progress="75"
                 android:max="100"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:paddingBottom="16dp"
-                android:gravity="center_horizontal"
-                android:textColor="@color/icons"
-                android:textSize="18sp"
-                android:text="120/365 Days Remaining"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

@@ -10,9 +10,9 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DataObject> mItemList;
+    private List<DepositItem> mItemList;
 
-    public RecyclerAdapter(List<DataObject> itemList) {
+    public RecyclerAdapter(List<DepositItem> itemList) {
         mItemList = itemList;
     }
 

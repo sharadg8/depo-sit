@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Sharad on 28-Aug-15.
  */
-public class DataObject {
+public class DepositItem {
     private int    _id;
     private String _title;
     private String _accNum;
@@ -24,9 +24,9 @@ public class DataObject {
 
     private boolean _active;
 
-    DataObject(int id, String title, String accNum, String bank,
-               float principle, float rate, float actInterest,
-               Date startDate, Date endDate, int tenure){
+    DepositItem(int id, String title, String accNum, String bank,
+                float principle, float rate, float actInterest,
+                Date startDate, Date endDate, int tenure){
         _id = id; _title = title; _accNum = accNum; _bank = bank;
         _principle = principle; _rate = rate; _actInterest = actInterest;
         _startDate = startDate; _endDate = endDate; _tenure = tenure;
@@ -48,7 +48,7 @@ public class DataObject {
         }
     }
 
-    DataObject(String title){
+    DepositItem(String title){
         _title = title;
         _principle = 150000;
         _rate = 8.6f;

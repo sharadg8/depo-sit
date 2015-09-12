@@ -89,13 +89,13 @@ public class DepositFragment extends Fragment {
         );
     }
 
-    private List<DataObject> createItemList() {
-        List<DataObject> itemList = new ArrayList<>();
+    private List<DepositItem> createItemList() {
+        List<DepositItem> itemList = new ArrayList<>();
         Bundle bundle = getArguments();
         if(bundle!=null) {
             int itemsCount = bundle.getInt(ITEMS_COUNT_KEY);
             for (int i = 0; i < itemsCount; i++) {
-                itemList.add(new DataObject("Item " + i));
+                itemList.add(new DepositItem("Item " + i));
             }
         }
         return itemList;
