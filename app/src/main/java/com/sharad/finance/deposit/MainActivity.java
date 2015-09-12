@@ -1,25 +1,20 @@
 package com.sharad.finance.deposit;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import java.util.ArrayList;
@@ -45,8 +40,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_UP){
-                    Intent intent = new Intent(getApplicationContext(), AddEditActivity.class);
-                    startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, AddEditActivity.class);
+
+                    View movingView = findViewById(R.id.appBarLayout);
+                    Pair<View, String> pair1 = Pair.create(movingView, movingView.getTransitionName());
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            MainActivity.this, pair1
+                    );
+                    ActivityCompat.startActivity(MainActivity.this, intent, options.toBundle());
                     return true;
                 }
                 return true;
@@ -58,14 +60,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.app_name));
-        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 
     private void initViewPagerAndTabs() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(DepositListFragment.createInstance(20), getString(R.string.tab_1));
-        pagerAdapter.addFragment(DepositListFragment.createInstance(4), getString(R.string.tab_2));
+        pagerAdapter.addFragment(DepositFragment.createInstance(20), getString(R.string.tab_1));
+        pagerAdapter.addFragment(DepositFragment.createInstance(4), getString(R.string.tab_2));
         viewPager.setAdapter(pagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);

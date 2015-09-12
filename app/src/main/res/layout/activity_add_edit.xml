@@ -6,6 +6,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
+        android:transitionName="@string/transition_name_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:id="@+id/ic_title"
-                android:src="@drawable/ic_label_black_24dp"/>
+                android:src="@drawable/ic_label_outline_black_24dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:id="@+id/ic_tenure"
-                    android:src="@drawable/ic_timer_black_24dp"/>
+                    android:src="@drawable/ic_access_time_black_24dp"/>
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

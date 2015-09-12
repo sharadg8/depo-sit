@@ -73,7 +73,7 @@ public class AddEditActivity extends ActionBarActivity {
         field.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                int coloId = hasFocus ? R.color.accent : R.color.secondary_text;
+                int coloId = hasFocus ? R.color.primary_dark : R.color.secondary_text;
                 int color = getResources().getColor(coloId);
                 icon.setColorFilter(color);
             }
@@ -84,7 +84,6 @@ public class AddEditActivity extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("NEW DEPOSIT");
-        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

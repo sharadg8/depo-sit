@@ -16,9 +16,13 @@
 
 package com.sharad.finance.deposit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,17 +37,17 @@ import java.util.List;
  * This fragment inflates a layout with two Floating Action Buttons and acts as a listener to
  * changes on them.
  */
-public class DepositListFragment extends Fragment {
-    private final static String TAG = "DepositListFragment";
+public class DepositFragment extends Fragment {
+    private final static String TAG = "DepositFragment";
 
     public final static String ITEMS_COUNT_KEY = "DepoListFragment$ItemsCount";
 
-    public static DepositListFragment createInstance(int itemsCount) {
-        DepositListFragment partThreeFragment = new DepositListFragment();
+    public static DepositFragment createInstance(int itemsCount) {
+        DepositFragment fragment = new DepositFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ITEMS_COUNT_KEY, itemsCount);
-        partThreeFragment.setArguments(bundle);
-        return partThreeFragment;
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Nullable
@@ -59,6 +63,30 @@ public class DepositListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         RecyclerAdapter recyclerAdapter = new RecyclerAdapter(createItemList());
         recyclerView.setAdapter(recyclerAdapter);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+                        //intent.putExtra(DetailsActivity.ID, Contact.CONTACTS[position].getId());
+
+                        View movingView = getActivity().findViewById(R.id.appBarLayout);
+                        Pair<View, String> pair1 = Pair.create(movingView, movingView.getTransitionName());
+                        movingView = getActivity().findViewById(R.id.fabButton);
+                        Pair<View, String> pair2 = Pair.create(movingView, movingView.getTransitionName());
+                        movingView = view.findViewById(R.id.circularProgressbar);
+                        Pair<View, String> pair3 = Pair.create(movingView, movingView.getTransitionName());
+                        movingView = view.findViewById(R.id.xDepoCardView);
+                        Pair<View, String> pair4 = Pair.create(movingView, movingView.getTransitionName());
+
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                getActivity(), pair1, pair2, pair3, pair4
+                        );
+                        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                    }
+                })
+        );
     }
 
     private List<String> createItemList() {

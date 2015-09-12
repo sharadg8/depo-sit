@@ -20,6 +20,10 @@
             android:name=".AddEditActivity"
             android:label="@string/title_activity_add_edit" >
         </activity>
+        <activity
+            android:name=".DetailsActivity"
+            android:label="@string/title_activity_details" >
+        </activity>
     </application>
 
 </manifest>
