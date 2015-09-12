@@ -1,14 +1,24 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
+
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/primary</item>
 
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:textColorPrimary">@color/icons</item>
         <item name="android:textColorSecondary">@color/icons</item>
-        <!-- Customize your theme here. -->
+
+        <item name="colorControlNormal">@color/secondary_text_disabled_material_light</item>
+
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textColorHint">@color/primary_text_disabled_material_light</item>
 
     </style>
 </resources>

@@ -2,99 +2,76 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp" >
+    android:layout_height="match_parent" >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/xDepoCardView"
         android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        cardview:cardUseCompatPadding="true"
-        cardview:cardElevation="4dp"
-        cardview:cardCornerRadius="6dp" >
+        android:clickable="true" >
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="72dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="16dp" >
+
+            <ProgressBar
+                android:id="@+id/circularProgressbar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_centerVertical="true"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progressDrawable="@drawable/circular"
+                android:indeterminate="false"
+                android:progress="75"
+                android:max="100"/>
 
             <RelativeLayout
-                android:layout_width="0px"
-                android:layout_weight="2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp" >
+                android:layout_centerVertical="true"
+                android:paddingLeft="64dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/dc_title"
+                    android:textColor="@color/primary_text"
                     android:layout_alignParentTop="true"
+                    android:textSize="16sp"
                     android:text="Card view"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/dc_amount"
-                    android:text="Card view text"
-                    android:textSize="30sp"
+                    android:text="50,000 @ 8.5%"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="14sp"
                     android:layout_below="@+id/dc_title" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/dc_days_rem"
-                    android:layout_below="@+id/dc_amount"
-                    android:text="126 days remaining"/>
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="12sp"
+                    android:text="12/09/2015"/>
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="0px"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@color/card_accent"
-                android:padding="16dp" >
-                <!--
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/dc_rate"
-                                    android:layout_alignParentTop="true"
-                                    android:textColor="@color/icons"
-                                    android:text="7.8%"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="64dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/divider"/>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/dc_interest"
-                                    android:textColor="@color/icons"
-                                    android:layout_below="@+id/dc_rate"
-                                    android:textSize="30sp"
-                                    android:text="4,256"/>
-
-                                <ProgressBar
-                                    android:id="@+id/circularProgressbar"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
-                                    style="?android:attr/progressBarStyleHorizontal"
-                                    android:layout_centerInParent="true"
-                                    android:indeterminate="false"
-                                    android:progress="75"
-                                    android:max="100"/>
-                -->
-                <ImageView
-                    android:id="@+id/circularProgressbar"
-                    android:layout_centerInParent="true"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 
