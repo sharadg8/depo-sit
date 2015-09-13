@@ -12,4 +12,6 @@
     <color name="card_accent_light">#FFCDD2</color>
     <color name="card_accent_dark">#FF5252</color>
 
+    <color name="action_circle">#DCDCDC</color>
+
 </resources>
