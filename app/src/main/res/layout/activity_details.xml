@@ -27,12 +27,26 @@
                 android:background="?attr/colorPrimary"
                 app:layout_collapseMode="pin" />
 
-            <RelativeLayout
-                android:layout_width="98dp"
-                android:layout_height="98dp"
-                android:id="@+id/action_view"
-                android:transitionName="@string/transition_name_circle"
-                android:layout_gravity="center" />
+            <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/action_flipper"
+                android:flipInterval="3000"
+                android:inAnimation="@anim/slide_in"
+                android:outAnimation="@anim/slide_out"
+                android:layout_gravity="center">
+                <RelativeLayout
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:id="@+id/action_logo"
+                    android:transitionName="@string/transition_name_circle"
+                    android:layout_gravity="center" />
+                <RelativeLayout
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:id="@+id/action_graph"
+                    android:layout_gravity="center" />
+            </ViewFlipper>
 
             <TextView
                 android:layout_width="match_parent"

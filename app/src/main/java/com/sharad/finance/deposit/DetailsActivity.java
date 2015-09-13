@@ -1,6 +1,5 @@
 package com.sharad.finance.deposit;
 
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,13 +9,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ViewFlipper;
 
 import com.sharad.finance.common.PieChart;
 
@@ -25,11 +20,6 @@ import java.util.List;
 
 
 public class DetailsActivity extends ActionBarActivity {
-    Handler tick_Handler = new Handler();
-    AnimThread tick_thread = new AnimThread();
-    RelativeLayout actionView;
-    List<View> actionViews;
-    int curActionId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +42,18 @@ public class DetailsActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        float values[] = { 150000, 11000 };
-        PieChart graphView = new PieChart(this, values);
-
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(R.drawable.ic_logo);
+        RelativeLayout rl1 = (RelativeLayout) findViewById(R.id.action_logo);
+        rl1.addView(imageView);
 
-        actionView = (RelativeLayout) findViewById(R.id.action_view);
-        actionView.addView(graphView);
+        float values[] = { 150000, 11000 };
+        PieChart graphView = new PieChart(this, values);
+        RelativeLayout rl2 = (RelativeLayout) findViewById(R.id.action_graph);
+        rl2.addView(graphView);
 
-        actionViews = new ArrayList<>();
-        actionViews.add(imageView);
-        actionViews.add(graphView);
+        ViewFlipper flipper = (ViewFlipper) findViewById(R.id.action_flipper);
+        flipper.startFlipping();
     }
 
     @Override
@@ -88,19 +78,6 @@ public class DetailsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onStop(){
-        tick_Handler.removeCallbacks(tick_thread);
-        super.onStop();
-    }
-
-    @Override
-    public void onResume(){
-        tick_Handler.post(tick_thread);
-        super.onResume();
-    }
-
 
     static class PagerAdapter extends FragmentPagerAdapter {
 
@@ -128,35 +105,6 @@ public class DetailsActivity extends ActionBarActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             return fragmentTitleList.get(position);
-        }
-    }
-
-    private class AnimThread implements Runnable {
-        @Override
-        public void run() {
-            TranslateAnimation exitAnim;
-            exitAnim = new TranslateAnimation(0.0f, -500.0f, 0.0f, 0.0f);
-            exitAnim.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation arg0) { }
-                @Override
-                public void onAnimationRepeat(Animation arg0) { }
-                @Override
-                public void onAnimationEnd(Animation arg0) {
-                    TranslateAnimation entryAnim = new TranslateAnimation(500.0f, 0.0f, 0.0f, 0.0f);
-                    entryAnim.setDuration(2000);
-                    entryAnim.setInterpolator(new DecelerateInterpolator(4.0f));
-                    actionView.removeAllViews();
-                    actionView.addView(actionViews.get(curActionId));
-                    actionView.startAnimation(entryAnim);
-                    curActionId++;
-                    curActionId = (curActionId < actionViews.size()) ? curActionId : 0;
-                }
-            });
-            exitAnim.setDuration(2000);
-            exitAnim.setInterpolator(new AccelerateInterpolator(4.0f));
-            actionView.startAnimation(exitAnim);
-            tick_Handler.postDelayed(tick_thread, 8000);
         }
     }
 }
