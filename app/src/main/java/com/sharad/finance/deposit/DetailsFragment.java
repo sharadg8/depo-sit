@@ -59,20 +59,21 @@ public class DetailsFragment extends Fragment {
     private List<DetailItem> createItemList() {
         List<DetailItem> itemList = new ArrayList<>();
 
-        itemList.add(new DetailItem(0, "SBI Bangalore", "Bank Name", R.drawable.ic_label_outline_black_24dp, false));
-        itemList.add(new DetailItem(0, "FD123456789", "Account Number", 0, true));
-        itemList.add(new DetailItem(0, "Sat, 12 Sep 2015", "Start Date", R.drawable.ic_access_time_black_24dp, false));
-        itemList.add(new DetailItem(0, "365 Days", "Tenure", 0, true));
-        itemList.add(new DetailItem(0, "1,50,000", "Principle", R.drawable.ic_attach_money_black_24dp, false));
-        itemList.add(new DetailItem(0, "8.6%", "Rate", 0, false));
-        itemList.add(new DetailItem(0, "23", "Interest Per Day", 0, false));
-        itemList.add(new DetailItem(0, "4,123", "Accumulated Interest", 0, true));
-        itemList.add(new DetailItem(0, "Sun, 11 Sep 2016", "Maturity Date", R.drawable.ic_card_giftcard_black_24dp, false));
-        itemList.add(new DetailItem(0, "126 Days", "Remaining", 0, false));
-        itemList.add(new DetailItem(0, "23", "Interest Per Day", 0, false));
-        itemList.add(new DetailItem(0, "8,123", "Interest", 0, false));
-        itemList.add(new DetailItem(0, "123", "TDS", 0, false));
-        itemList.add(new DetailItem(0, "1,58,000", "Return Amount", 0, false));
+        itemList.add(new DetailItem("Title Text", "Title", R.drawable.ic_label_outline_black_24dp, false));
+        itemList.add(new DetailItem("SBI Bangalore", "Bank Name", 0, false));
+        itemList.add(new DetailItem("FD123456789", "Account Number", 0, true));
+        itemList.add(new DetailItem("Sat, 12 Sep 2015", "Start Date", R.drawable.ic_access_time_black_24dp, false));
+        itemList.add(new DetailItem("365 Days", "Tenure", 0, true));
+        itemList.add(new DetailItem("1,50,000", "Principle", R.drawable.ic_attach_money_black_24dp, false));
+        itemList.add(new DetailItem("8.6%", "Rate", 0, false));
+        itemList.add(new DetailItem("23", "Interest Per Day", 0, false));
+        itemList.add(new DetailItem("4,123", "Accumulated Interest", 0, true));
+        itemList.add(new DetailItem("Sun, 11 Sep 2016", "Maturity Date", R.drawable.ic_card_giftcard_black_24dp, false));
+        itemList.add(new DetailItem("126 Days", "Remaining", 0, false));
+        itemList.add(new DetailItem("23", "Interest Per Day", 0, false));
+        itemList.add(new DetailItem("8,123", "Interest", 0, false));
+        itemList.add(new DetailItem("123", "TDS", 0, false));
+        itemList.add(new DetailItem("1,58,000", "Return Amount", 0, false));
 
         return itemList;
     }

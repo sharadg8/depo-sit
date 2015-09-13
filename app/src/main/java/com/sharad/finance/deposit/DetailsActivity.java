@@ -20,6 +20,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+import com.sharad.finance.common.PieChart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +51,10 @@ public class DetailsActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle("Deposit Account");
+        float values[] = { 150000, 11000 };
+        LinearLayout lv1 = (LinearLayout) findViewById(R.id.graph_view);
+        PieChart graphview = new PieChart(this, values);
+        lv1.addView(graphview);
     }
 
     @Override
