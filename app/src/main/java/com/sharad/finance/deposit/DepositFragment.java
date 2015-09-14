@@ -38,8 +38,8 @@ import java.util.List;
  * changes on them.
  */
 public class DepositFragment extends Fragment {
+    protected DBAdapter _db;
     private final static String TAG = "DepositFragment";
-
     public final static String ITEMS_COUNT_KEY = "DepoListFragment$ItemsCount";
 
     public static DepositFragment createInstance(int itemsCount) {
@@ -53,8 +53,7 @@ public class DepositFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-                R.layout.feed_list, container, false);
+        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.feed_list, container, false);
         setupRecyclerView(recyclerView);
         return recyclerView;
     }
@@ -89,13 +88,26 @@ public class DepositFragment extends Fragment {
         );
     }
 
-    private List<DepositItem> createItemList() {
-        List<DepositItem> itemList = new ArrayList<>();
+    @Override
+    public void onResume() {
+        super.onResume();
+        _db = new DBAdapter(getActivity());
+        _db.open();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        _db.close();
+    }
+
+    private List<Deposit> createItemList() {
+        List<Deposit> itemList = new ArrayList<>();
         Bundle bundle = getArguments();
         if(bundle!=null) {
             int itemsCount = bundle.getInt(ITEMS_COUNT_KEY);
             for (int i = 0; i < itemsCount; i++) {
-                itemList.add(new DepositItem("Item " + i));
+                itemList.add(new Deposit("Item " + i));
             }
         }
         return itemList;

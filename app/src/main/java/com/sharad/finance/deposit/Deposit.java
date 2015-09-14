@@ -8,11 +8,12 @@ import java.util.Date;
 /**
  * Created by Sharad on 28-Aug-15.
  */
-public class DepositItem {
+public class Deposit {
     private int    _id;
     private String _title;
     private String _accNum;
     private String _bank;
+    private String _type;
     private float  _principle;
     private float  _rate;
     private Date   _startDate;
@@ -21,15 +22,17 @@ public class DepositItem {
     private int    _daysRemain;
     private float  _accInterest; //Accumulated interest
     private float  _actInterest; //Actual interest earned
+    private Status _status;
 
     private boolean _active;
 
-    DepositItem(int id, String title, String accNum, String bank,
-                float principle, float rate, float actInterest,
-                Date startDate, Date endDate, int tenure){
+    public enum Status { INVALID, ACTIVE, CLOSED, CANCELLED };
+
+    Deposit(int id, String title, String bank, String accNum, Date start_date, Date end_date, String type,
+            float principle, float rate, float actInterest, float tds, int status, int tenure){
         _id = id; _title = title; _accNum = accNum; _bank = bank;
         _principle = principle; _rate = rate; _actInterest = actInterest;
-        _startDate = startDate; _endDate = endDate; _tenure = tenure;
+        _startDate = start_date; _endDate = end_date; /*_status = status;*/ _tenure = tenure;
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(_endDate);
@@ -48,7 +51,7 @@ public class DepositItem {
         }
     }
 
-    DepositItem(String title){
+    Deposit(String title){
         _title = title;
         _principle = 150000;
         _rate = 8.6f;

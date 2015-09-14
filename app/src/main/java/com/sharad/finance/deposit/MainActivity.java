@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    protected DBAdapter _db;
     private static String LOG_TAG = "MainActivity";
 
     @Override
@@ -143,18 +142,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        _db = new DBAdapter(this);
-        _db.open();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        _db.close();
     }
 }

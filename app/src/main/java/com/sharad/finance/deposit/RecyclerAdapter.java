@@ -11,9 +11,9 @@ import java.util.Random;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DepositItem> mItemList;
+    private List<Deposit> mItemList;
 
-    public RecyclerAdapter(List<DepositItem> itemList) {
+    public RecyclerAdapter(List<Deposit> itemList) {
         mItemList = itemList;
     }
 

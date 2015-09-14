@@ -22,6 +22,7 @@ public class DBAdapter {
     public static final String KEY_FD_BANK       = "bank";
     public static final String KEY_FD_ACCNUM     = "acc_num";
     public static final String KEY_FD_DATE       = "date";
+    public static final String KEY_FD_END_DATE   = "end_date";
     public static final String KEY_FD_TYPE       = "type";
     public static final String KEY_FD_AMOUNT     = "amount";
     public static final String KEY_FD_RATE       = "rate";
@@ -36,16 +37,17 @@ public class DBAdapter {
     public static final int COL_FD_BANK      = 2;
     public static final int COL_FD_ACCNUM    = 3;
     public static final int COL_FD_DATE      = 4;
-    public static final int COL_FD_TYPE      = 5;
-    public static final int COL_FD_AMOUNT    = 6;
-    public static final int COL_FD_RATE      = 7;
-    public static final int COL_FD_EARNED    = 8;
-    public static final int COL_FD_TDS       = 9;
-    public static final int COL_FD_STATUS    = 10;
-    public static final int COL_FD_TENURE    = 11;
+    public static final int COL_FD_END_DATE  = 5;
+    public static final int COL_FD_TYPE      = 6;
+    public static final int COL_FD_AMOUNT    = 7;
+    public static final int COL_FD_RATE      = 8;
+    public static final int COL_FD_EARNED    = 9;
+    public static final int COL_FD_TDS       = 10;
+    public static final int COL_FD_STATUS    = 11;
+    public static final int COL_FD_TENURE    = 12;
 
     public static final String[] ALL_KEYS_FD = new String[] {KEY_FD_ROWID, KEY_FD_TITLE,
-            KEY_FD_BANK, KEY_FD_ACCNUM, KEY_FD_DATE, KEY_FD_TYPE, KEY_FD_AMOUNT,
+            KEY_FD_BANK, KEY_FD_ACCNUM, KEY_FD_DATE, KEY_FD_END_DATE, KEY_FD_TYPE, KEY_FD_AMOUNT,
             KEY_FD_RATE, KEY_FD_EARNED, KEY_FD_TDS, KEY_FD_STATUS, KEY_FD_TENURE   };
 
     public static final String DATABASE_NAME = "savings";
@@ -58,6 +60,7 @@ public class DBAdapter {
             + KEY_FD_BANK      + " text not null, "
             + KEY_FD_ACCNUM    + " text not null, "
             + KEY_FD_DATE      + " text not null, "
+            + KEY_FD_END_DATE  + " text not null, "
             + KEY_FD_TYPE      + " text not null, "
             + KEY_FD_AMOUNT    + " float not null, "
             + KEY_FD_RATE      + " float not null, "
@@ -99,7 +102,7 @@ public class DBAdapter {
        +++++++++++++++++++++ FD RECORD METHODS ++++++++++++++++++++++
        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     */
-    public long insertFD(String title, String bank, String accNum, String date, String type,
+    public long insertFD(String title, String bank, String accNum, String date, String end_date, String type,
                          float amount, float rate, float earned, float tds, int status, int tenure) {
         // Create row's data:
         ContentValues initialValues = new ContentValues();
@@ -107,6 +110,7 @@ public class DBAdapter {
         initialValues.put(KEY_FD_BANK, bank);
         initialValues.put(KEY_FD_ACCNUM, accNum);
         initialValues.put(KEY_FD_DATE, date);
+        initialValues.put(KEY_FD_END_DATE, end_date);
         initialValues.put(KEY_FD_TYPE, type);
         initialValues.put(KEY_FD_AMOUNT, amount);
         initialValues.put(KEY_FD_RATE, rate);
@@ -144,7 +148,7 @@ public class DBAdapter {
         return c;
     }
 
-    public boolean updateFD(long rowId, String title, String bank, String accNum, String date, String type,
+    public boolean updateFD(long rowId, String title, String bank, String accNum, String date, String end_date, String type,
                             float amount, float rate, float earned, float tds, int status, int tenure) {
         String where = KEY_FD_ROWID + "=" + rowId;
 
@@ -154,6 +158,7 @@ public class DBAdapter {
         newValues.put(KEY_FD_BANK, bank);
         newValues.put(KEY_FD_ACCNUM, accNum);
         newValues.put(KEY_FD_DATE, date);
+        newValues.put(KEY_FD_END_DATE, end_date);
         newValues.put(KEY_FD_TYPE, type);
         newValues.put(KEY_FD_AMOUNT, amount);
         newValues.put(KEY_FD_RATE, rate);
