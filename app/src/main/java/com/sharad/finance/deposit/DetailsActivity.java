@@ -1,5 +1,6 @@
 package com.sharad.finance.deposit;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -7,8 +8,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
@@ -21,6 +26,7 @@ import java.util.List;
 
 
 public class DetailsActivity extends ActionBarActivity {
+    ViewFlipper _flipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +64,17 @@ public class DetailsActivity extends ActionBarActivity {
         RelativeLayout rl3 = (RelativeLayout) findViewById(R.id.action_graph);
         rl3.addView(graphView);
 
-        ViewFlipper flipper = (ViewFlipper) findViewById(R.id.action_flipper);
-        flipper.startFlipping();
-    }
+        final GestureDetector detector = new GestureDetector(new SwipeGestureDetector());
+        _flipper = (ViewFlipper) this.findViewById(R.id.action_flipper);
+        _flipper.startFlipping();
+        _flipper.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(final View view, final MotionEvent event) {
+                detector.onTouchEvent(event);
+                return true;
+            }
+        });
+     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,6 +125,39 @@ public class DetailsActivity extends ActionBarActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             return fragmentTitleList.get(position);
+        }
+    }
+
+    class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListener {
+        private static final int SWIPE_MIN_DISTANCE = 120;
+        private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2,
+                               float velocityX, float velocityY) {
+            Context ctx = getApplicationContext();
+            try {
+                // right to left swipe
+                if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
+                        && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    _flipper.setInAnimation(AnimationUtils.loadAnimation(ctx, R.anim.left_in));
+                    _flipper.setOutAnimation(AnimationUtils.loadAnimation(ctx, R.anim.left_out));
+                    _flipper.stopFlipping();
+                    _flipper.showNext();
+                    _flipper.startFlipping();
+                    return true;
+                } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
+                        && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    _flipper.setInAnimation(AnimationUtils.loadAnimation(ctx, R.anim.right_in));
+                    _flipper.setOutAnimation(AnimationUtils.loadAnimation(ctx, R.anim.right_out));
+                    _flipper.stopFlipping();
+                    _flipper.showPrevious();
+                    _flipper.startFlipping();
+                    return true;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return false;
         }
     }
 }

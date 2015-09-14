@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    protected DBAdapter _db;
     private static String LOG_TAG = "MainActivity";
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getAction() == MotionEvent.ACTION_UP) {
                     Intent intent = new Intent(MainActivity.this, AddEditActivity.class);
 
                     View movingView = findViewById(R.id.appBarLayout);
@@ -143,5 +143,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        _db = new DBAdapter(this);
+        _db.open();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        _db.close();
     }
 }
