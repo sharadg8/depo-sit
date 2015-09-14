@@ -44,6 +44,11 @@
                 <RelativeLayout
                     android:layout_width="98dp"
                     android:layout_height="98dp"
+                    android:id="@+id/action_progress"
+                    android:layout_gravity="center" />
+                <RelativeLayout
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
                     android:id="@+id/action_graph"
                     android:layout_gravity="center" />
             </ViewFlipper>

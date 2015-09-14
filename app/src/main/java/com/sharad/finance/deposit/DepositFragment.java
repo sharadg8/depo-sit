@@ -75,7 +75,7 @@ public class DepositFragment extends Fragment {
                         Pair<View, String> pair1 = Pair.create(movingView, movingView.getTransitionName());
                         movingView = getActivity().findViewById(R.id.fabButton);
                         Pair<View, String> pair2 = Pair.create(movingView, movingView.getTransitionName());
-                        movingView = view.findViewById(R.id.circularProgressbar);
+                        movingView = view.findViewById(R.id.dc_progress);
                         Pair<View, String> pair3 = Pair.create(movingView, movingView.getTransitionName());
                         movingView = view.findViewById(R.id.xDepoCardView);
                         Pair<View, String> pair4 = Pair.create(movingView, movingView.getTransitionName());

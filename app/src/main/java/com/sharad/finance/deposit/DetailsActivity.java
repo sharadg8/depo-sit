@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
 import com.sharad.finance.common.PieChart;
+import com.sharad.finance.common.Progress;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +48,15 @@ public class DetailsActivity extends ActionBarActivity {
         RelativeLayout rl1 = (RelativeLayout) findViewById(R.id.action_logo);
         rl1.addView(imageView);
 
+        Progress progressView = new Progress(this, true);
+        RelativeLayout rl2 = (RelativeLayout) findViewById(R.id.action_progress);
+        progressView.setProgress(60);
+        rl2.addView(progressView);
+
         float values[] = { 150000, 11000 };
         PieChart graphView = new PieChart(this, values);
-        RelativeLayout rl2 = (RelativeLayout) findViewById(R.id.action_graph);
-        rl2.addView(graphView);
+        RelativeLayout rl3 = (RelativeLayout) findViewById(R.id.action_graph);
+        rl3.addView(graphView);
 
         ViewFlipper flipper = (ViewFlipper) findViewById(R.id.action_flipper);
         flipper.startFlipping();

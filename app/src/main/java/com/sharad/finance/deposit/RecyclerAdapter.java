@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+import java.util.Random;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -32,6 +33,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.setTitle(titleText);
         holder.setInfo(infoText);
         holder.setDate(dateText);
+        Random r = new Random();
+        holder.setProgress(r.nextInt(99));
     }
 
     @Override
