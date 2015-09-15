@@ -34,8 +34,6 @@
                 android:flipInterval="3000"
                 android:inAnimation="@anim/left_in"
                 android:outAnimation="@anim/left_out"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
                 android:layout_gravity="center">
                 <RelativeLayout
                     android:layout_width="98dp"

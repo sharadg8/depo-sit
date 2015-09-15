@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-                    Intent intent = new Intent(MainActivity.this, AddEditActivity.class);
+                    Intent intent = new Intent(MainActivity.this, AddActivity.class);
 
                     View movingView = findViewById(R.id.appBarLayout);
                     Pair<View, String> pair1 = Pair.create(movingView, movingView.getTransitionName());
@@ -64,8 +64,12 @@ public class MainActivity extends AppCompatActivity {
     private void initViewPagerAndTabs() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(DepositFragment.createInstance(20), getString(R.string.tab_1));
-        pagerAdapter.addFragment(DepositFragment.createInstance(4), getString(R.string.tab_2));
+        String key = DBAdapter.KEY_FD_STATUS+"="+Deposit.STATUS_ACTIVE;
+        pagerAdapter.addFragment(DepositFragment.createInstance(key), getString(R.string.tab_1));
+        key = DBAdapter.KEY_FD_STATUS+"="+Deposit.STATUS_CLOSED;
+        pagerAdapter.addFragment(DepositFragment.createInstance(key), getString(R.string.tab_2));
+        key = DBAdapter.KEY_FD_STATUS+"="+Deposit.STATUS_CANCEL;
+        pagerAdapter.addFragment(DepositFragment.createInstance(null), getString(R.string.tab_3));
         viewPager.setAdapter(pagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);

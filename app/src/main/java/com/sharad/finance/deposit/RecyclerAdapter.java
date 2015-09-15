@@ -6,15 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private ArrayList<Deposit> mItemList;
 
-    private List<Deposit> mItemList;
+    public RecyclerAdapter() {
+        mItemList = new ArrayList<>();
+    }
 
-    public RecyclerAdapter(List<Deposit> itemList) {
-        mItemList = itemList;
+    public ArrayList<Deposit> getItemList() {
+        return mItemList;
     }
 
     @Override
@@ -27,14 +31,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         RecyclerItemViewHolder holder = (RecyclerItemViewHolder) viewHolder;
-        String titleText = mItemList.get(position).get_title();
-        String infoText = mItemList.get(position).get_info();
-        String dateText = mItemList.get(position).get_startDateText();
-        holder.setTitle(titleText);
-        holder.setInfo(infoText);
-        holder.setDate(dateText);
-        Random r = new Random();
-        holder.setProgress(r.nextInt(99));
+        holder.setTitle(mItemList.get(position).get_title());
+        holder.setInfo(mItemList.get(position).get_info());
+        holder.setDate(mItemList.get(position).get_startDateText());
+        holder.setProgress(mItemList.get(position).get_progress());
     }
 
     @Override

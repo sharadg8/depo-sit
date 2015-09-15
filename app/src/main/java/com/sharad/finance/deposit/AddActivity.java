@@ -1,7 +1,6 @@
 package com.sharad.finance.deposit;
 
 import android.app.DatePickerDialog;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,13 +10,14 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
-public class AddEditActivity extends ActionBarActivity {
+public class AddActivity extends ActionBarActivity {
+	private DBAdapter _db;
     int mYear;
     int mMonth;
     int mDay;
@@ -25,7 +25,7 @@ public class AddEditActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit);
+        setContentView(R.layout.activity_add);
 
         initToolbar();
         initWidgets();
@@ -52,12 +52,15 @@ public class AddEditActivity extends ActionBarActivity {
                 mMonth = mcurrentDate.get(Calendar.MONTH);
                 mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog mDatePicker = new DatePickerDialog(AddEditActivity.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog mDatePicker = new DatePickerDialog(AddActivity.this, new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int year, int month, int day) {
                         EditText field = (EditText) findViewById(R.id.et_start_date);
                         Calendar cal = Calendar.getInstance();
                         cal.set(year, month, day);
                         field.setText(df.format(cal.getTime()));
+                        mYear = year;
+                        mMonth = month;
+                        mDay = day;
                     }
                 }, mYear, mMonth, mDay);
                 mDatePicker.show();
@@ -88,6 +91,19 @@ public class AddEditActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+	@Override
+    public void onResume() {
+        super.onResume();
+        _db = new DBAdapter(this);
+        _db.open();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        _db.close();
+    }
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -134,6 +150,34 @@ public class AddEditActivity extends ActionBarActivity {
         int tenure = getItemTenure();
         if(tenure <= 0) return false;
 
+		Calendar end = Calendar.getInstance();
+        end.set(mYear, mMonth, mDay);
+        Date start = end.getTime();
+		end.add(Calendar.DATE, tenure);
+		
+		int type = 0;
+		
+		int status = 0;
+		long diff = System.currentTimeMillis() - start.getTime();
+		if(diff < 0) {
+			status = Deposit.STATUS_INVALID;
+		} else {
+			diff = end.getTimeInMillis() - System.currentTimeMillis();
+			if(diff < 0) {
+				status = Deposit.STATUS_CLOSED;
+			} else {
+				status = Deposit.STATUS_ACTIVE;
+			}
+		}
+		
+		float accInt = 0;
+		float actInt = 0;
+		float tds = 0;
+		
+		Deposit newDeposit = new Deposit(0, title, bank, accNum, "note", start, end.getTime(),
+						tenure, type, status, principle, rate, accInt, actInt, tds);
+		newDeposit.set_id(_db.insertDeposit(newDeposit));
+		
         return true;
     }
 

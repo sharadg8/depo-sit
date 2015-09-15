@@ -38,14 +38,16 @@ import java.util.List;
  * changes on them.
  */
 public class DepositFragment extends Fragment {
-    protected DBAdapter _db;
+    private DBAdapter _db;
+    private String _where;
+    private RecyclerAdapter _adapter;
     private final static String TAG = "DepositFragment";
-    public final static String ITEMS_COUNT_KEY = "DepoListFragment$ItemsCount";
+    public final static String ITEMS_QUERY_KEY = "DepositFragment$queryKey";
 
-    public static DepositFragment createInstance(int itemsCount) {
+    public static DepositFragment createInstance(String where) {
         DepositFragment fragment = new DepositFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(ITEMS_COUNT_KEY, itemsCount);
+        bundle.putString(ITEMS_QUERY_KEY, where);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,32 +57,30 @@ public class DepositFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.feed_list, container, false);
         setupRecyclerView(recyclerView);
+        Bundle bundle = this.getArguments();
+        _where = bundle.getString(ITEMS_QUERY_KEY, null);
         return recyclerView;
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(createItemList());
-        recyclerView.setAdapter(recyclerAdapter);
+        _adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(_adapter);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         Intent intent = new Intent(getActivity(), DetailsActivity.class);
-                        //intent.putExtra(DetailsActivity.ID, Contact.CONTACTS[position].getId());
+                        intent.putExtra(DetailsActivity.ID_KEY, _adapter.getItemList().get(position).get_id());
 
                         View movingView = getActivity().findViewById(R.id.appBarLayout);
                         Pair<View, String> pair1 = Pair.create(movingView, movingView.getTransitionName());
-                        movingView = getActivity().findViewById(R.id.fabButton);
-                        Pair<View, String> pair2 = Pair.create(movingView, movingView.getTransitionName());
                         movingView = view.findViewById(R.id.dc_progress);
-                        Pair<View, String> pair3 = Pair.create(movingView, movingView.getTransitionName());
-                        movingView = view.findViewById(R.id.xDepoCardView);
-                        Pair<View, String> pair4 = Pair.create(movingView, movingView.getTransitionName());
+                        Pair<View, String> pair2 = Pair.create(movingView, movingView.getTransitionName());
 
                         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                                getActivity(), pair1, pair2, pair3, pair4
+                                getActivity(), pair1, pair2
                         );
                         ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                     }
@@ -93,6 +93,7 @@ public class DepositFragment extends Fragment {
         super.onResume();
         _db = new DBAdapter(getActivity());
         _db.open();
+        updateItemList();
     }
 
     @Override
@@ -101,15 +102,9 @@ public class DepositFragment extends Fragment {
         _db.close();
     }
 
-    private List<Deposit> createItemList() {
-        List<Deposit> itemList = new ArrayList<>();
-        Bundle bundle = getArguments();
-        if(bundle!=null) {
-            int itemsCount = bundle.getInt(ITEMS_COUNT_KEY);
-            for (int i = 0; i < itemsCount; i++) {
-                itemList.add(new Deposit("Item " + i));
-            }
+    private void updateItemList() {
+        if(_db != null) {
+            _db.getDeposits(_adapter.getItemList(), _where);
         }
-        return itemList;
     }
 }

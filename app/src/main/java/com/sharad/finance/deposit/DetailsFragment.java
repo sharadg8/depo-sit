@@ -30,6 +30,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +42,30 @@ import java.util.List;
  */
 public class DetailsFragment extends Fragment {
     private final static String TAG = "DetailsFragment";
+    public final static String ITEM_ID_KEY = "DetailsFragment$idKey";
+    private Deposit _deposit;
+
+    public static DetailsFragment createInstance(long id) {
+        DetailsFragment fragment = new DetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putLong(ITEM_ID_KEY, id);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.feed_list, container, false);
+
+        Bundle bundle = this.getArguments();
+        long id = bundle.getLong(ITEM_ID_KEY, 0);
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+        _deposit = db.getDeposit(id);
+        db.close();
+
         setupRecyclerView(recyclerView);
         return recyclerView;
     }
@@ -58,22 +78,22 @@ public class DetailsFragment extends Fragment {
 
     private List<DetailItem> createItemList() {
         List<DetailItem> itemList = new ArrayList<>();
-
-        itemList.add(new DetailItem("Title Text", "Title", R.drawable.ic_label_outline_black_24dp, false));
-        itemList.add(new DetailItem("SBI Bangalore", "Bank Name", 0, false));
-        itemList.add(new DetailItem("FD123456789", "Account Number", 0, true));
-        itemList.add(new DetailItem("Sat, 12 Sep 2015", "Start Date", R.drawable.ic_access_time_black_24dp, false));
-        itemList.add(new DetailItem("365 Days", "Tenure", 0, true));
-        itemList.add(new DetailItem("1,50,000", "Principle", R.drawable.ic_attach_money_black_24dp, false));
-        itemList.add(new DetailItem("8.6%", "Rate", 0, false));
-        itemList.add(new DetailItem("23", "Interest Per Day", 0, false));
-        itemList.add(new DetailItem("4,123", "Accumulated Interest", 0, true));
-        itemList.add(new DetailItem("Sun, 11 Sep 2016", "Maturity Date", R.drawable.ic_card_giftcard_black_24dp, false));
-        itemList.add(new DetailItem("126 Days", "Remaining", 0, false));
-        itemList.add(new DetailItem("23", "Interest Per Day", 0, false));
-        itemList.add(new DetailItem("8,123", "Interest", 0, false));
-        itemList.add(new DetailItem("123", "TDS", 0, false));
-        itemList.add(new DetailItem("1,58,000", "Return Amount", 0, false));
+        DecimalFormat nf = new DecimalFormat("##,##,###");
+        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy");
+        itemList.add(new DetailItem(_deposit.get_title(), "Title", R.drawable.ic_label_outline_black_24dp, false));
+        itemList.add(new DetailItem(_deposit.get_bank(), "Bank Name", 0, false));
+        itemList.add(new DetailItem(_deposit.get_accNum(), "Account Number", 0, true));
+        itemList.add(new DetailItem(df.format(_deposit.get_startDate()), "Start Date", R.drawable.ic_access_time_black_24dp, false));
+        itemList.add(new DetailItem(""+_deposit.get_tenure()+" Days", "Tenure", 0, true));
+        itemList.add(new DetailItem(nf.format(_deposit.get_principle()), "Principle", R.drawable.ic_attach_money_black_24dp, false));
+        itemList.add(new DetailItem(""+_deposit.get_rate()+"%", "Rate", 0, false));
+        itemList.add(new DetailItem(nf.format(_deposit.get_intPerDay()), "Interest Per Day", 0, false));
+        itemList.add(new DetailItem(nf.format(_deposit.get_accInterest()), "Accumulated Interest", 0, true));
+        itemList.add(new DetailItem(df.format(_deposit.get_endDate()), "Close Date", R.drawable.ic_card_giftcard_black_24dp, false));
+        itemList.add(new DetailItem(""+_deposit.get_daysRemain()+" Days", "Remaining", 0, false));
+        itemList.add(new DetailItem(nf.format(_deposit.get_actInterest()), "Interest", 0, false));
+        itemList.add(new DetailItem(nf.format(_deposit.get_tds()), "TDS", 0, false));
+        itemList.add(new DetailItem(nf.format(_deposit.get_principle()+_deposit.get_actInterest()), "Return Amount", 0, false));
 
         return itemList;
     }

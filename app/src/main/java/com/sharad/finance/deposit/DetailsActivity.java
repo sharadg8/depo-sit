@@ -26,12 +26,23 @@ import java.util.List;
 
 
 public class DetailsActivity extends ActionBarActivity {
-    ViewFlipper _flipper;
+    public final static String ID_KEY = "DetailsActivity$idKey";
+    private ViewFlipper _flipper;
+    private Deposit _deposit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            long id = extras.getLong(ID_KEY, 0);
+            DBAdapter db = new DBAdapter(this);
+            db.open();
+            _deposit = db.getDeposit(id);
+            db.close();
+        }
 
         initToolbar();
         initFragment();
@@ -40,7 +51,7 @@ public class DetailsActivity extends ActionBarActivity {
     private void initFragment() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(new DetailsFragment(), "Details");
+        pagerAdapter.addFragment(DetailsFragment.createInstance(_deposit.get_id()), "Details");
         viewPager.setAdapter(pagerAdapter);
     }
 
@@ -56,10 +67,10 @@ public class DetailsActivity extends ActionBarActivity {
 
         Progress progressView = new Progress(this, true);
         RelativeLayout rl2 = (RelativeLayout) findViewById(R.id.action_progress);
-        progressView.setProgress(60);
+        progressView.setProgress(_deposit.get_progress());
         rl2.addView(progressView);
 
-        float values[] = { 150000, 11000 };
+        float values[] = { _deposit.get_principle(), _deposit.get_actInterest() };
         PieChart graphView = new PieChart(this, values);
         RelativeLayout rl3 = (RelativeLayout) findViewById(R.id.action_graph);
         rl3.addView(graphView);
