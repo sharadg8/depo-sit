@@ -56,14 +56,6 @@ public class Deposit {
         _progress = (100 * _daysRemain) / _tenure;
     }
 
-    Deposit(String title){
-        _title = title;
-        _principle = 150000;
-        _rate = 8.6f;
-        Calendar c = Calendar.getInstance();
-        _startDate = c.getTime();
-    }
-	
 	public void set_id(long id) {             _id = id;      }
 
     public Date get_endDate() {        return _endDate;      }
