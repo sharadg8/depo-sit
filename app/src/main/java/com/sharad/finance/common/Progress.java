@@ -27,7 +27,7 @@ import java.util.Random;
 public class Progress extends View {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private float value_degree;
-    private List<Integer> color_id;
+    private int color_id;
     private int cirColor_id;
     private Bitmap shadow;
     private RectF rectPro;
@@ -42,13 +42,14 @@ public class Progress extends View {
         cirColor_id = context.getResources().getColor(R.color.action_circle);
 
         TypedArray ta = context.getResources().obtainTypedArray(R.array.colors);
-        color_id = new ArrayList<>();
+        List<Integer> color_list = new ArrayList<>();
         for (int i = 0; i < ta.length(); i++) {
-            color_id.add(ta.getColor(i, 0));
+            color_list.add(ta.getColor(i, 0));
         }
         ta.recycle();
-        Collections.shuffle(color_id);
+        Collections.shuffle(color_list);
         value_degree = 360 * (30 / 100);
+        color_id = color_list.get(0);
     }
 
     public void setProgress(int value) {
@@ -58,6 +59,11 @@ public class Progress extends View {
 
     public void setProgress(int value, int max) {
         value_degree = 360 * ((float)value / max);
+        invalidate();
+    }
+
+    public void setColor(int value) {
+        color_id = value;
         invalidate();
     }
 
@@ -85,10 +91,10 @@ public class Progress extends View {
         if(showBackground) {
             canvas.drawCircle(rectCir.centerX(), rectCir.centerY(), (rectCir.width() / 2), paint);
         }
-        paint.setStrokeWidth(10);
+        paint.setStrokeWidth(0.07f * diameter);
         paint.setStrokeCap(Paint.Cap.BUTT);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setColor(color_id.get(0));
+        paint.setColor(color_id);
         paint.setAlpha(25);
         canvas.drawArc(rectPro, -90, 360, true, paint);
         paint.setAlpha(255);
@@ -98,7 +104,7 @@ public class Progress extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawBitmap(shadow, rectCir.left, rectCir.top, paint);
-        paint.setColor(color_id.get(0));
+        paint.setColor(color_id);
         Path path = new Path();
         path.arcTo(rectPro, -90, value_degree, true);
         canvas.drawPath(path, paint);

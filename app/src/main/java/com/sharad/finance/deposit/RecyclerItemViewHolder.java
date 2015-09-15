@@ -21,6 +21,7 @@ public class RecyclerItemViewHolder extends RecyclerView.ViewHolder {
         _info = infoView;
         _date = dateView;
         _progress = progress;
+        _progress.setColor(parent.getResources().getColor(R.color.primary_dark));
     }
 
     public static RecyclerItemViewHolder newInstance(View parent) {
