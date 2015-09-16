@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -77,18 +78,24 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
-                    case 0:  fab.show();  break;
-                    default: fab.hide();  break;
+                    case 0:
+                        fab.show();
+                        break;
+                    default:
+                        fab.hide();
+                        break;
                 }
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) { }
+            public void onPageScrollStateChanged(int state) {
+            }
         });
     }
 
@@ -139,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
         switch(id) {
             case R.id.action_settings:
                 return true;
+            case R.id.action_dummy:
+                setupDummyDatabase();
+                return true;
             case R.id.action_chart:
                 return true;
             default:
@@ -146,5 +156,39 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setupDummyDatabase() {
+        DBAdapter db = new DBAdapter(this);
+        db.open();
+
+        db.insertDeposit(new Deposit(0, "Aug 2015", "SBI Bangalore", "00000035137506353", "note",
+                new Date(115, 8, 7), new Date(116, 8, 6), 365, 0, Deposit.STATUS_ACTIVE, 55000, 7.75f, 0, 0, 0));
+
+        db.insertDeposit(new Deposit(0, "Aug 2015", "SBI Bangalore", "00000035131972773", "note",
+                new Date(115, 8, 5), new Date(116, 8, 4), 365, 0, Deposit.STATUS_ACTIVE, 100000, 7.75f, 0, 0, 0));
+
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000035052169070", "note",
+                new Date(115, 7, 7), new Date(116, 7, 6), 365, 0, Deposit.STATUS_ACTIVE, 40000, 8, 0, 0, 0));
+
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000035037049648", "note",
+                new Date(115, 7, 1), new Date(116, 6, 30), 365, 0, Deposit.STATUS_ACTIVE, 120000, 8, 0, 0, 0));
+
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000035037049648", "note",
+                new Date(115, 7, 1), new Date(116, 6, 30), 365, 0, Deposit.STATUS_ACTIVE, 120000, 8, 0, 0, 0));
+
+        db.insertDeposit(new Deposit(0, "Jun 2015", "SBI Bangalore", "00000034992218675", "note",
+                new Date(115, 6, 12), new Date(116, 6, 11), 365, 0, Deposit.STATUS_ACTIVE, 80000, 8, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034793497379", "note",
+                new Date(115, 3, 16), new Date(116, 3, 16), 365, 0, Deposit.STATUS_ACTIVE, 145000, 8.5f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034684146880", "note",
+                new Date(115, 2, 7), new Date(116, 2, 7), 365, 0, Deposit.STATUS_ACTIVE, 160000, 8.5f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034584644084", "note",
+                new Date(115, 1, 9), new Date(116, 1, 9), 365, 0, Deposit.STATUS_ACTIVE, 60000, 8.5f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034137989110", "note",
+                new Date(115, 9, 3), new Date(116, 3, 3), 365, 0, Deposit.STATUS_ACTIVE, 54182, 7.5f, 0, 0, 0));
+
+
+        db.close();
     }
 }

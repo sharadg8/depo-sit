@@ -38,7 +38,6 @@ public class Progress extends View {
         super(context);
 
         showBackground = background;
-
         cirColor_id = context.getResources().getColor(R.color.action_circle);
 
         TypedArray ta = context.getResources().obtainTypedArray(R.array.colors);

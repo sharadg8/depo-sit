@@ -71,7 +71,8 @@ public class DetailsActivity extends ActionBarActivity {
         rl2.addView(progressView);
 
         float values[] = { _deposit.get_principle(), _deposit.get_actInterest() };
-        PieChart graphView = new PieChart(this, values);
+        PieChart graphView = new PieChart(this, true);
+        graphView.setValues(values);
         RelativeLayout rl3 = (RelativeLayout) findViewById(R.id.action_graph);
         rl3.addView(graphView);
 

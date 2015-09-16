@@ -7,11 +7,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="Sharad"
+        android:label="Deposit"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="Sharad" >
+            android:label="Deposit" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -29,10 +29,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 /**
  * This fragment inflates a layout with two Floating Action Buttons and acts as a listener to
  * changes on them.

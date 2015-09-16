@@ -7,7 +7,7 @@
 
     <string name="tab_1">ACTIVE</string>
     <string name="tab_2">CLOSED</string>
-    <string name="tab_3">CANCELLED</string>
+    <string name="tab_3">ALL</string>
     <string name="tab_4">UPCOMING</string>
     <string name="title_activity_add_edit">AddEditActivity</string>
     <string name="title_activity_details">DetailsActivity</string>

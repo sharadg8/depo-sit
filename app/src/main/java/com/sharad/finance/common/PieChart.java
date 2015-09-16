@@ -32,10 +32,12 @@ public class PieChart extends View {
     RectF rectPie;
     RectF rectCir;
     float temp = 0;
+    private boolean showBackground;
 
-    public PieChart(Context context, float[] values) {
+    public PieChart(Context context, boolean background) {
         super(context);
 
+        showBackground = background;
         cirColor_id = context.getResources().getColor(R.color.action_circle);
 
         TypedArray ta = context.getResources().obtainTypedArray(R.array.colors);
@@ -45,17 +47,20 @@ public class PieChart extends View {
         }
         ta.recycle();
         Collections.shuffle(color_id);
+    }
 
+    public void setValues(float[] values) {
         float total = 0;
         for (int i = 0; i < values.length; i++) {
             total += values[i];
         }
 
-        Random r = new Random();
         value_degree = new float[values.length];
         for (int i = 0; i < values.length; i++) {
             value_degree[i] = 360 * (values[i] / total);
         }
+
+        invalidate();
     }
 
     @Override
@@ -77,12 +82,14 @@ public class PieChart extends View {
         rectPie.bottom -= (rectCir.height() * scale);
 
         shadow = Bitmap.createBitmap((int)diameter, (int)diameter, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(shadow);
-        paint.setColor(cirColor_id);
-        canvas.drawCircle(rectCir.centerX(), rectCir.centerY(), (rectCir.width() / 2), paint);
-        paint.setShadowLayer(2.0f, 6.0f, 6.0f, Color.LTGRAY);
-        canvas.drawCircle((diameter/2), (diameter/2), (rectPie.width()/2), paint);
-        paint.setShadowLayer(0.0f, 0.0f, 0.0f, Color.BLACK);
+        if(showBackground) {
+            Canvas canvas = new Canvas(shadow);
+            paint.setColor(cirColor_id);
+            canvas.drawCircle(rectCir.centerX(), rectCir.centerY(), (rectCir.width() / 2), paint);
+            paint.setShadowLayer(2.0f, 6.0f, 6.0f, Color.LTGRAY);
+            canvas.drawCircle((diameter / 2), (diameter / 2), (rectPie.width() / 2), paint);
+            paint.setShadowLayer(0.0f, 0.0f, 0.0f, Color.BLACK);
+        }
     }
 
     @Override

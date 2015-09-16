@@ -43,9 +43,11 @@ public class Deposit {
 			long diff = System.currentTimeMillis() - _startDate.getTime();
             float daySince = (float) diff / (24 * 60 * 60 * 1000);
             _daysRemain = (int)((tenure - daySince) > 0 ? (tenure - daySince) : 0);
-			_intPerDay = _accInterest / daySince;
-			//double roi = (double)_rate / 36500;
-            //_accInterest = (int)(_principle * roi * daySince);
+
+            double roi = (double)_rate / 36500;
+            _accInterest = (int)(_principle * roi * daySince);
+            _actInterest = (int)(_principle * roi * tenure);
+            _intPerDay = _accInterest / daySince;
 		} else {
 			_daysRemain = 0;
 			long diff = _endDate.getTime() - _startDate.getTime();

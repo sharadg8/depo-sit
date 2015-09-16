@@ -31,10 +31,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         RecyclerItemViewHolder holder = (RecyclerItemViewHolder) viewHolder;
-        holder.setTitle(mItemList.get(position).get_title());
-        holder.setInfo(mItemList.get(position).get_info());
-        holder.setDate(mItemList.get(position).get_startDateText());
-        holder.setProgress(mItemList.get(position).get_progress());
+        Deposit deposit = mItemList.get(position);
+        holder.setTitle(deposit.get_title());
+        holder.setInfo(deposit.get_info());
+        holder.setDate(deposit.get_startDateText());
+        holder.setProgress(deposit.get_progress());
+        float values[] = { deposit.get_principle(), deposit.get_actInterest() };
+        holder.setPieValues(values);
+        if(deposit.get_status() != Deposit.STATUS_ACTIVE) {
+            holder.showPie();
+        } else {
+            holder.showProgress();
+        }
     }
 
     @Override
