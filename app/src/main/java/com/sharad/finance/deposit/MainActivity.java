@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch(id) {
             case R.id.action_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                ActivityCompat.startActivity(this, intent, options.toBundle());
                 return true;
             case R.id.action_dummy:
                 setupDummyDatabase();
