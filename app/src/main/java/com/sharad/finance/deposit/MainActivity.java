@@ -161,33 +161,33 @@ public class MainActivity extends AppCompatActivity {
     private void setupDummyDatabase() {
         DBAdapter db = new DBAdapter(this);
         db.open();
-
         db.insertDeposit(new Deposit(0, "Aug 2015", "SBI Bangalore", "00000035137506353", "note",
-                new Date(115, 8, 7), new Date(116, 8, 6), 365, 0, Deposit.STATUS_ACTIVE, 55000, 7.75f, 0, 0, 0));
-
+                new Date(115, 7, 7), new Date(116, 7, 6), 365, 0, Deposit.STATUS_ACTIVE, 55000, 7.75f, 0, 0, 0));
         db.insertDeposit(new Deposit(0, "Aug 2015", "SBI Bangalore", "00000035131972773", "note",
-                new Date(115, 8, 5), new Date(116, 8, 4), 365, 0, Deposit.STATUS_ACTIVE, 100000, 7.75f, 0, 0, 0));
-
+                new Date(115, 7, 5), new Date(116, 7, 4), 365, 0, Deposit.STATUS_ACTIVE, 100000, 7.75f, 0, 0, 0));
         db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000035052169070", "note",
-                new Date(115, 7, 7), new Date(116, 7, 6), 365, 0, Deposit.STATUS_ACTIVE, 40000, 8, 0, 0, 0));
-
+                new Date(115, 6, 7), new Date(116, 6, 6), 365, 0, Deposit.STATUS_ACTIVE, 40000, 8, 0, 0, 0));
         db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000035037049648", "note",
-                new Date(115, 7, 1), new Date(116, 6, 30), 365, 0, Deposit.STATUS_ACTIVE, 120000, 8, 0, 0, 0));
-
+                new Date(115, 6, 1), new Date(116, 5, 30), 365, 0, Deposit.STATUS_ACTIVE, 120000, 8, 0, 0, 0));
         db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000035037049648", "note",
-                new Date(115, 7, 1), new Date(116, 6, 30), 365, 0, Deposit.STATUS_ACTIVE, 120000, 8, 0, 0, 0));
-
+                new Date(115, 6, 1), new Date(116, 6, 30), 365, 0, Deposit.STATUS_ACTIVE, 120000, 8, 0, 0, 0));
         db.insertDeposit(new Deposit(0, "Jun 2015", "SBI Bangalore", "00000034992218675", "note",
-                new Date(115, 6, 12), new Date(116, 6, 11), 365, 0, Deposit.STATUS_ACTIVE, 80000, 8, 0, 0, 0));
-        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034793497379", "note",
-                new Date(115, 3, 16), new Date(116, 3, 16), 365, 0, Deposit.STATUS_ACTIVE, 145000, 8.5f, 0, 0, 0));
-        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034684146880", "note",
-                new Date(115, 2, 7), new Date(116, 2, 7), 365, 0, Deposit.STATUS_ACTIVE, 160000, 8.5f, 0, 0, 0));
-        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034584644084", "note",
-                new Date(115, 1, 9), new Date(116, 1, 9), 365, 0, Deposit.STATUS_ACTIVE, 60000, 8.5f, 0, 0, 0));
-        db.insertDeposit(new Deposit(0, "Jul 2015", "SBI Bangalore", "00000034137989110", "note",
-                new Date(115, 9, 3), new Date(116, 3, 3), 365, 0, Deposit.STATUS_ACTIVE, 54182, 7.5f, 0, 0, 0));
+                new Date(115, 5, 12), new Date(116, 5, 11), 365, 0, Deposit.STATUS_ACTIVE, 80000, 8, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Mar 2015", "SBI Bangalore", "00000034793497379", "note",
+                new Date(115, 2, 16), new Date(116, 2, 16), 365, 0, Deposit.STATUS_ACTIVE, 145000, 8.5f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Feb 2015", "SBI Bangalore", "00000034684146880", "note",
+                new Date(115, 1, 7), new Date(116, 1, 7), 365, 0, Deposit.STATUS_ACTIVE, 160000, 8.5f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Jan 2015", "SBI Bangalore", "00000034584644084", "note",
+                new Date(115, 0, 9), new Date(116, 0, 9), 365, 0, Deposit.STATUS_ACTIVE, 60000, 8.5f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Sep 2015", "SBI Bangalore", "00000034137989110", "note",
+                new Date(115, 8, 3), new Date(116, 8, 3), 365, 0, Deposit.STATUS_ACTIVE, 54182, 7.5f, 0, 0, 0));
 
+        db.insertDeposit(new Deposit(0, "Jul 2014", "SBI Bangalore", "00000034137989110", "note",
+                new Date(114, 6, 7), new Date(115, 6, 6), 365, 0, Deposit.STATUS_CLOSED, 40000, 9f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Aug 2014", "SBI Bangalore", "00000034137989110", "note",
+                new Date(114, 7, 7), new Date(115, 7, 6), 365, 0, Deposit.STATUS_CLOSED, 50000, 9f, 0, 0, 0));
+        db.insertDeposit(new Deposit(0, "Sep 2014", "SBI Bangalore", "00000034137989110", "note",
+                new Date(114, 8, 3), new Date(115, 8, 3), 365, 0, Deposit.STATUS_CLOSED, 50000, 9f, 0, 0, 0));
 
         db.close();
     }

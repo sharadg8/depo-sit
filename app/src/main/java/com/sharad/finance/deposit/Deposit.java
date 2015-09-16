@@ -85,9 +85,14 @@ public class Deposit {
     }
 
     public String get_startDateText() {
-        final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
         cal.setTime(_startDate);
+        final SimpleDateFormat df;
+        if(cal.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+            df = new SimpleDateFormat("dd MMM");
+        } else {
+            df = new SimpleDateFormat("dd/MM/yyyy");
+        }
         return df.format(cal.getTime());
     }
 }
