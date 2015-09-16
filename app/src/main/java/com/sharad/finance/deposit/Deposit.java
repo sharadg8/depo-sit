@@ -55,7 +55,7 @@ public class Deposit {
 			_intPerDay = _actInterest / days;
 		}
 
-        _progress = (100 * _daysRemain) / _tenure;
+        _progress = (100 * (_tenure - _daysRemain)) / _tenure;
     }
 
 	public void set_id(long id) {             _id = id;      }
