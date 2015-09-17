@@ -110,6 +110,7 @@ public class SettingsActivity extends PreferenceActivity {
         bindPreferenceSummaryToValue(findPreference("user_name"));
         bindPreferenceSummaryToValue(findPreference("sort_by"));
         bindPreferenceSummaryToValue(findPreference("sort_order"));
+        bindPreferenceSummaryToValue(findPreference("notification_before"));
         bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
         //bindPreferenceSummaryToValue(findPreference("sync_frequency"));
 
