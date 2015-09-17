@@ -27,7 +27,7 @@ public class TimePreference extends DialogPreference {
         setPositiveButtonText("Ok");
         setNegativeButtonText("Cancel");
 
-        sdf = new SimpleDateFormat("HH:mm aa");
+        sdf = new SimpleDateFormat("hh:mm a");
     }
 
     @Override
@@ -54,7 +54,7 @@ public class TimePreference extends DialogPreference {
             lastMinute = picker.getCurrentMinute();
 
             Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.HOUR_OF_DAY, lastHour);
+            cal.set(Calendar.HOUR, lastHour);
             cal.set(Calendar.MINUTE, lastMinute);
 
             String time = sdf.format(cal.getTime());
@@ -75,9 +75,11 @@ public class TimePreference extends DialogPreference {
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
         Calendar cal = Calendar.getInstance();
 
-        String time = "08:00 am";
+        String time = "08:00 AM";
         if (restoreValue) {
-            if (defaultValue != null) {
+            if (defaultValue == null) {
+                time = getPersistedString(time);
+            } else {
                 time = defaultValue.toString();
             }
         } else {
@@ -90,7 +92,7 @@ public class TimePreference extends DialogPreference {
             e.printStackTrace();
         }
 
-        lastHour = cal.get(Calendar.HOUR_OF_DAY);
+        lastHour = cal.get(Calendar.HOUR);
         lastMinute = cal.get(Calendar.MINUTE);
         setSummary(sdf.format(cal.getTime()));
     }

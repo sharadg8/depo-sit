@@ -1,6 +1,9 @@
 package com.sharad.finance.deposit;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -105,6 +108,9 @@ public class DetailsActivity extends ActionBarActivity {
                 onBackPressed();
                 return true;
             case R.id.action_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                ActivityCompat.startActivity(this, intent, options.toBundle());
                 return true;
         }
 
