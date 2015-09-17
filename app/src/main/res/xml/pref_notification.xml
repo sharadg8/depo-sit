@@ -7,6 +7,16 @@
         android:title="@string/pref_title_enable_notifications"
         android:defaultValue="true" />
 
+    <ListPreference
+        android:dependency="notifications_enable"
+        android:key="notification_before"
+        android:title="@string/pref_title_notification_before"
+        android:defaultValue="1"
+        android:entries="@array/pref_notification_before_titles"
+        android:entryValues="@array/pref_notification_before_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+        
     <com.sharad.finance.common.TimePreference
         android:dependency="notifications_enable"
         android:key="notification_time"
